@@ -1,0 +1,1 @@
+compilação: gcc program.c -o program
