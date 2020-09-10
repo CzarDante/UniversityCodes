@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-int dec = 0, bin = 0, binario[50];
+int dec = 0, bin = 0, binario[50], hexa = 0, oct = 0;
 int i = 0, j;
 
 int bin_to_dec(int bin)
@@ -18,15 +18,21 @@ int bin_to_dec(int bin)
 
     return total;
 }
+
 void menu(void) {
     printf("\n===========================================================\n");
     printf("\nBEM-VINDO AO CONVERSOR DE BASES NUMERICAS\n\n");
     printf("QUAL OPERAÇaO DESEJA REALIZAR? \n\n");
     printf("[ 1 ] BINARIO     ->  DECIMAL\n");
     printf("[ 2 ] DECIMAL     ->  BINARIO\n");
+    printf("[ 3 ] DECIMAL     ->  HEXADECIMAL\n");
+    printf("[ 4 ] DECIMAL     ->  OCTAL\n");
+    printf("[ 5 ] HEXADECIMAL ->  DECIMAL\n");
+    printf("[ 6 ] HEXADECIMAL ->  OCTAL\n");
     printf("[ 0 ] SAIR\n");
     printf("\n===========================================================\n");
 }
+
 void process_calc(int opt) {
     switch(opt) {        
         case 0 :
@@ -36,7 +42,7 @@ void process_calc(int opt) {
             printf("Binario: ");
             scanf("%d", &bin);
             dec = bin_to_dec(bin);
-            printf("Bin: %d = Dec: %d\n", bin, dec);
+            printf("Dec: %d\n", dec);
             break;
         case 2 :
             printf("Decimal: ");
@@ -47,11 +53,31 @@ void process_calc(int opt) {
                 i++;
                 aux = aux/2;
             }
-            printf("Dec: %d = Bin: ", dec);
+            printf("Bin: ");
             for(j=i-1; j>=0; j--){
                 printf("%d", binario[j]);
             }
             printf("\n");
+            break;
+        case 3:
+            printf("Decimal: ");
+            scanf("%d", &dec);
+            printf("Hexadecimal: %X\n", dec);
+            break;
+        case 4:
+            printf("Decimal: ");
+            scanf("%d", &dec);
+            printf("Octal: %o\n", dec);
+            break;
+        case 5:
+            printf("Hexadecimal: ");
+            scanf("%X", &hexa);
+            printf("Decimal: %d", hexa);
+            break;
+        case 6:
+            printf("Hexadecimal: ");
+            scanf("%X", &hexa);
+            printf("Octal: %o", hexa);
             break;
         default :
             printf("OPÇÃO NÃO PERMITIDA!\nTENTE NOVAMENTE\n");

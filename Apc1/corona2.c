@@ -38,7 +38,7 @@ void altera_matriz(char matriz[100][100], int num_elementos, char elemento1, cha
 }
 //imprime a matriz
 void printa_matriz(char matriz[100][100]){
-    system("clear");
+    system("cls");
     for(int a = 0; a < 100; a++){
         for(int b = 0; b < 100; b++){
             if(matriz[a][b] == 'X'){

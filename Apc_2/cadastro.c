@@ -3,13 +3,25 @@
 
 typedef struct cadastro
 {
-    int matricula;
-    float n1,n2,media;
+    char nome[30];
+    int matricula, idade;
+    float peso, altura;
 
 }cadastro;
 
-float media(float n1, float n2){
-    return (n1+n2)/2;
+void preenche_cadastro(cadastro * p){
+    printf("\nDigite o nome da pesso: ");
+    printf("\nDigite a matricula da pessoa: ");
+    scanf("%d",&p->matricula);
+    printf("\nDigite a idade da pessoa: ");
+    scanf("%d", &p->idade);
+    printf("\nDigite o peso da pessoa: ");
+    scanf("%f",&p->peso);
+    printf("\nDigite a altura da pessoa: ");
+    scanf("%f",&p->altura);
+}
+void mostra_cadastro(cadastro p){
+    printf("\nNome:  Matricula: %d\nIdade: %d\nPeso: %f Altura %f",p.matricula,p.idade,p.peso,p.altura);
 }
 
 int main(){
