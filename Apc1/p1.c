@@ -1,6 +1,6 @@
 #include <stdio.h>
 
- 
+ //CONVERTE BASE 10 PARA BASE 3; LIMITE[999]; IMPRIME SEMPRE 7 NUMEROS NA BASE 3;
 int main ( )
 {
     int b10 , b3 =  0 , i, res1, res2, res3, res4, res5, res6, res7;
@@ -39,7 +39,7 @@ int main ( )
     } else {
         res7 = (b10 / 729) % 3;
     }
-    printf("%d %d %d %d %d %d %d\n",  res7, res6, res5, res4, res3, res2, res1);
+    printf("%d%d%d%d%d%d%d\n",  res7, res6, res5, res4, res3, res2, res1);
 
     return 0;
 }
