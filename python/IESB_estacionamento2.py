@@ -48,4 +48,3 @@ while selecao != 0:
             print(linhas)
     else:
         print("Seleção inválida")
-
