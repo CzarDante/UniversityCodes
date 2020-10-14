@@ -36,6 +36,7 @@ void ImprimeTodasAsPessoas(funcionario * funcionarios, int qtd_funcionarios)
     int i;
     float somasalario =0 ;
     long int somacargahora = 0;
+    float valor_hora=0;
     if (qtd_funcionarios == 0)
     {
         printf("\n Lista vazia\n");
@@ -48,8 +49,10 @@ void ImprimeTodasAsPessoas(funcionario * funcionarios, int qtd_funcionarios)
         
         somasalario += funcionarios[i].salario_bruto;
         somacargahora += funcionarios[i].carga_horaria;
+        valor_hora += funcionarios[i].salario_bruto/funcionarios[i].carga_horaria;
         if(i == qtd_funcionarios-1){
             printf("\nSoma de todos os salarios brutos: %0.2f\n media de cargas horarias: %ld\n", somasalario, somacargahora/qtd_funcionarios);
+            printf("Valor por hora da empresa: %0.3f\n", valor_hora/qtd_funcionarios);
         }
     }
 }
@@ -72,8 +75,8 @@ int buscar(funcionario *funcinarios, int qtd_funcionarios, int matricula_procura
         {
             if (funcinarios[i].matricula == matricula_procurada)
             {
-                int ultimo = qtd_funcionarios;
-                for(int j=i;j<ultimo-1; j++){
+                
+                for(int j=i;j<qtd_funcionarios; j++){
                     funcinarios[i].matricula = funcinarios[i+1].matricula;
                     funcinarios[i].carga_horaria = funcinarios[i+1].carga_horaria;
                     funcinarios[i].salario_bruto = funcinarios[i+1].salario_bruto;

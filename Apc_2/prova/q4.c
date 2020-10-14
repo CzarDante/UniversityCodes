@@ -57,9 +57,9 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
         }
     }
     for(i=0;i<3;i++){
-        if(lista1_coordenadas[i].x >0 && lista1_coordenadas[i].y >=0 ){
+        if(lista1_coordenadas[i].x >0 && lista1_coordenadas[i].y >0 ){
             lista1quadrante1++;
-        }if(lista1_coordenadas[i].x <0 && lista1_coordenadas[i].y >=0 ){
+        }if(lista1_coordenadas[i].x <0 && lista1_coordenadas[i].y >0 ){
             lista1quadrante2++;
         }if(lista1_coordenadas[i].x <0 && lista1_coordenadas[i].y <0 ){
             lista1quadrante3++;
@@ -67,9 +67,9 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
             lista1quadrante4++;
         }
 
-        if(lista2_coordenadas[i].x >0 && lista2_coordenadas[i].y >=0 ){
+        if(lista2_coordenadas[i].x >0 && lista2_coordenadas[i].y >0 ){
             lista2quadrante1++;
-        }if(lista2_coordenadas[i].x <0 && lista2_coordenadas[i].y >=0 ){
+        }if(lista2_coordenadas[i].x <0 && lista2_coordenadas[i].y >0 ){
             lista2quadrante2++;
         }if(lista2_coordenadas[i].x <0 && lista2_coordenadas[i].y <0 ){
             lista2quadrante3++;
