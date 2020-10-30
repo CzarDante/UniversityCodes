@@ -11,5 +11,4 @@ int main()
         printf("%d ", rand() % 2); 
     }
     
-
 }

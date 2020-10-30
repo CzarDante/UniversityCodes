@@ -79,36 +79,42 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
     }
     if(lista1quadrante1>lista2quadrante1){
             printf("Lista 1 tem maior ocorrenciano 1 quadrante \n");
-        }if(lista1quadrante1==lista2quadrante1){
-            printf("As listas tem a mesma ocorrencia no 1 quadrante \n");
-        }if(lista1quadrante1<lista2quadrante1){
-            printf("Lista 2 tem maior ocorrenciano 1 quadrante \n");
-        }
-
-        if(lista1quadrante2>lista2quadrante2){
-            printf("Lista 1 tem maior ocorrenciano 2 quadrante \n");
-        }if(lista1quadrante2==lista2quadrante2){
-            printf("As listas tem a mesma ocorrencia no 2 quadrante \n");
-        }if(lista1quadrante2<lista2quadrante2){
-            printf("Lista 2 tem maior ocorrenciano 2 quadrante \n");
-        }
-
-        if(lista1quadrante3>lista2quadrante3){
-            printf("Lista 1 tem maior ocorrenciano 3 quadrante \n");
-        }if(lista1quadrante3==lista2quadrante3){
-            printf("As listas tem a mesma ocorrencia no 3 quadrante \n");
-        }if(lista1quadrante3<lista2quadrante3){
-            printf("Lista 2 tem maior ocorrenciano 3 quadrante \n");
-        }
-
-        if(lista1quadrante4>lista2quadrante4){
-            printf("Lista 1 tem maior ocorrenciano 4 quadrante \n");
-        }if(lista1quadrante4==lista2quadrante4){
-            printf("As listas tem a mesma ocorrencia no 4 quadrante \n");
-        }if(lista1quadrante4<lista2quadrante4){
-            printf("Lista 2 tem maior ocorrenciano 4 quadrante \n");
-        }
+    }
+    if(lista1quadrante1==lista2quadrante1){
+        printf("As listas tem a mesma ocorrencia no 1 quadrante \n");
+    }
+    if(lista1quadrante1<lista2quadrante1){
+        printf("Lista 2 tem maior ocorrenciano 1 quadrante \n");
+    }
+    if(lista1quadrante2>lista2quadrante2){
+        printf("Lista 1 tem maior ocorrenciano 2 quadrante \n");
+    }
+    if(lista1quadrante2==lista2quadrante2){
+        printf("As listas tem a mesma ocorrencia no 2 quadrante \n");
+    }
+    if(lista1quadrante2<lista2quadrante2){
+        printf("Lista 2 tem maior ocorrenciano 2 quadrante \n");
+    }
+    if(lista1quadrante3>lista2quadrante3){
+        printf("Lista 1 tem maior ocorrenciano 3 quadrante \n");
+    }
+    if(lista1quadrante3==lista2quadrante3){
+        printf("As listas tem a mesma ocorrencia no 3 quadrante \n");
+    }
+    if(lista1quadrante3<lista2quadrante3){
+        printf("Lista 2 tem maior ocorrenciano 3 quadrante \n");
+    }
+    if(lista1quadrante4>lista2quadrante4){
+        printf("Lista 1 tem maior ocorrenciano 4 quadrante \n");
+    }
+    if(lista1quadrante4==lista2quadrante4){
+        printf("As listas tem a mesma ocorrencia no 4 quadrante \n");
+    }
+    if(lista1quadrante4<lista2quadrante4){
+        printf("Lista 2 tem maior ocorrenciano 4 quadrante \n");
+    }
 }
+
 
 int main()
 {
