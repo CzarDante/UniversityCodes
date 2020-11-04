@@ -1,0 +1,26 @@
+1FN:
+Trecho(CodEst,CodLocIni,CodLocFim,Distancia,NomeEst, NomeLocIni,SiglaUFIni,NomeUFIni)
+2FN :
+Trecho(CodEst,CodLocIni,CodLocFim,Distancia)
+Cod(CodEstado, NomeEst)
+LocIni(CodLocIni, NomeLocIni, SiglaUFIni,NomeUFIni)
+3FN:
+Trecho(CodEst,CodLocIni,CodLocFim, Distancia)
+Cod(CodEst, NomeEst)
+LocIni(CodLocIni, NomeLocIni, SiglaUFIni)
+UF(SiglaUFIni,NomeUFIni)        
+
+
+2FN :
+ItemVenda (NúmeroNF,CodigoTipoProd,NumeroProd, QtdeItem,PreçoItem)
+Produto (CodigoTipoProd,NumeroProd, DescricaoProd)
+TipoProd (CodigoTipoProd, DescricaoTipoProd )
+Venda (NúmeroNF, DataVenda, CodReg, CodEmp, NomeEmp)
+3FN:
+ItemVenda(NúmeroNF, CodigoTipoProd, NumeroProd, QtdeItem, PreçoItem)
+Produto(CodigoTipoProd, NumeroProd, DescricaoProd)
+TipoProd(CodigoTipoProd, DescricaoTipoProd)
+Venda(NumeroNF, DataVenda, CodReg, CodEmp)
+Empregado(CodEmp, NomeEmp)
+
+
