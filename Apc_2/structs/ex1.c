@@ -56,7 +56,6 @@ void preenche_pessoa (pessoa * p)
     printf("\nDigite a altura da pessoa: ");
     scanf("%f",&p->altura);
 
-
 }
 
 void mostrar_pessoa(pessoa p)
