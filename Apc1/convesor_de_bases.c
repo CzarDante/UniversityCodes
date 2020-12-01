@@ -123,11 +123,11 @@ void process_calc(int opt) {
 int main(void)
 {
     int opcao;
-    
-    menu();
-    scanf("%d", &opcao);
-    process_calc(opcao);
-    
+    while(opcao!=0){
+        menu();
+        scanf("%d", &opcao);
+        process_calc(opcao);
+    }       
     
          
     return 0;
