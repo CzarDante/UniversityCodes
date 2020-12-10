@@ -24,19 +24,56 @@ typedef struct cadastro
     char sexo[10];
 }cadastro;
 void preenche_pessoa (cadastro * p);
-void menu(cadastro *pessoas, int *qtdPessoas);
+//void menu(cadastro *pessoas, int *qtdPessoas);
 void AdicionaPessoa(cadastro * pessoas, cadastro p, int qtdPessoas);
-void mostras_pessoa(cadastro * pessoas, cadastro p, int qtdPessoas);
-void busca_masc(cadastro * pessoas, cadastro p, int qtdPessoas);
-void busca_sal(cadastro * pessoas, cadastro p, int qtdPessoas);
-void busca_id(cadastro * pessoas, cadastro p, int qtdPessoas);
+void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z);
+void busca_masc(cadastro * pessoas, int qtdPessoas);
+void busca_sal(cadastro * pessoas, int qtdPessoas);
+void busca_id(cadastro * pessoas, int qtdPessoas);
+
+void Opcoes()
+{
+    printf("\n 1 - Incluir Pessoa ");
+    printf("\n 2 - Encontrar mais velho");
+    printf("\n 3 - Encontrar Pessoas do sexo masculino");
+    printf("\n 4 - Encontrar pessoas com salario maior que 1000");
+    printf("\n 5 - Encontrar por identidade");
+    printf("\n 6 - sair");   
+}
+
 
 int main()
 {  
     cadastro pessoas[5];
     cadastro p;
     int opcao, qtdPessoas = 0;
-    menu(cadastro * pessoas, qtdPessoas);
+     do
+    {
+        Opcoes();
+        scanf("%d", &opcao); 
+        if (opcao == 1)
+        {
+            preenche_pessoa(&p);
+            AdicionaPessoa(pessoas, p, qtdPessoas);
+            qtdPessoas++;  
+        }
+        if (opcao == 2)
+        {
+            
+        }
+        if (opcao == 3)
+        {
+            busca_masc(pessoas, qtdPessoas);
+        }
+        if (opcao == 4)
+        {
+            busca_sal(pessoas, qtdPessoas);
+        }
+        if (opcao == 5)
+        {
+            busca_id(pessoas, qtdPessoas);
+        }
+    } while (opcao != 6);
     return 0;
 }
 
@@ -83,104 +120,67 @@ void preenche_pessoa (cadastro * p)
     p->sexo[strlen(p->sexo)-1] = '\0';
 }
 
-void menu(cadastro *pessoas, int *qtdPessoas)
-{
-    int opcao;
-    do
-    {
-        printf("\n 1 - Incluir Pessoa ");
-        printf("\n 2 - Encontrar mais velho");
-        printf("\n 3 - Encontrar Pessoas do sexo masculino");
-        printf("\n 4 - Encontrar pessoas com salario maior que 1000");
-        printf("\n 5 - Encontrar por identidade");
-        printf("\n 9 - sair");
-        scanf("%d", &opcao);
-
-        switch (opcao)
-        {
-        case 1:
-            preenche_pessoa(&p);
-            AdicionaPessoa(cadastro *pessoas, p, qtdPessoas);
-            break;
-        case 2:
-            
-            break;
-        case 3:
-            busca_masc(cadastro * pessoas, cadastro p, qtdPessoas);
-            break;
-        case 4:
-            busca_sal(cadastro * pessoas, cadastro p, qtdPessoas);
-            break;
-        case 5:
-            busca_id(cadastro * pessoas, cadastro p, qtdPessoas);
-            break;
-        case 9:
-            printf("\n saindo ... \n");
-            break;
-        default:
-            printf("\n opcao invalida");
-            break;
-        }
-    } while (opcao != 9);
-}
-
 void AdicionaPessoa(cadastro * pessoas, cadastro p, int qtdPessoas)
 {
     pessoas[qtdPessoas] = p;
 }
-void mostras_pessoa(cadastro  pessoas, cadastro p, int qtdPessoas)
+void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z)
 {
+    if(qtdPessoas==0){
+        printf("Nao a funcionarios\n");
+    }
     printf("\nnome: ");   
-    printf("%s",p.nome);
+    printf("%s",pessoas[z].nome);
     printf("\nEndereço: ");
     printf("\nRua: ");
-    printf("%s",p.casa->rua);
+    printf("%s",pessoas[z].casa->rua);
     printf("\nBairro: ");
-    printf("%s",p.casa->bairro);
+    printf("%s",pessoas[z].casa->bairro);
     printf("\nCidade: ");
-    printf("%s",p.casa->cidade);
+    printf("%s",pessoas[z].casa->cidade);
     printf("\nEstado: ");
-    printf("%s",p.casa->estado);
+    printf("%s",pessoas->casa->estado);
     printf("\nCep: ");
-    printf("%ld",p.casa->cep);
+    printf("%ld",pessoas->casa->cep);
     printf("\nsalario: ");
-    printf("%0.2lf",p.salario); 
+    printf("%0.2lf",pessoas->salario); 
     printf("\ncpf: ");
-    printf("%ld",p.cpf);
+    printf("%ld",pessoas->cpf);
     printf("\nestado civil: ");
-    printf("%s",p.estado_civil);
+    printf("%s",pessoas->estado_civil);
     printf("\ntelefone: ");
-    printf("%ld",p.telefone);
+    printf("%ld",pessoas->telefone);
     printf("\nidade: ");
-    printf("%d",p.idade); 
+    printf("%d",pessoas->idade); 
 }
-void busca_masc(cadastro * pessoas, cadastro p, int qtdPessoas)
+void busca_masc(cadastro * pessoas, int qtdPessoas)
 {
+    char masc[4]="masc";
     for(int z=0;z<qtdPessoas;z++){
-        if(p.sexo=='masc'){
-            mostrar_pessoa(pessoas[z]);
+        if(strcmp(pessoas[z].sexo,masc)){
+            mostrar_pessoa(pessoas,qtdPessoas,z);
         }
     }
     
 }
-void busca_sal(cadastro * pessoas, cadastro p, int qtdPessoas)
+void busca_sal(cadastro * pessoas, int qtdPessoas)
 {
     for(int z=0;z<qtdPessoas;z++){
-        if(p.salario>=1000){
-            mostrar_pessoa(pessoas[z]);
+        if(pessoas[z].salario>=1000){
+            mostrar_pessoa(pessoas,qtdPessoas,z);
         }
     }
     
 }
 
-void busca_id(cadastro * pessoas, cadastro p, int qtdPessoas)
+void busca_id(cadastro * pessoas, int qtdPessoas)
 {
     long int id;
     printf("qual a id?\n");
     scanf("%ld",&id);
     for(int z=0;z<qtdPessoas;z++){
-        if(p.id==id){
-            mostrar_pessoa(pessoas[z]);
+        if(pessoas[z].id==id){
+            mostrar_pessoa(pessoas,qtdPessoas,z);
         }
     }
     
