@@ -23,9 +23,10 @@ typedef struct cadastro
     int idade;
     char sexo[10];
 }cadastro;
-void preenche_pessoa (cadastro * p);
+
+void preenche_pessoa (cadastro * pessoas,int qtdPessoas);
 //void menu(cadastro *pessoas, int *qtdPessoas);
-void AdicionaPessoa(cadastro * pessoas, cadastro p, int qtdPessoas);
+//void AdicionaPessoa(cadastro * pessoas, cadastro p, int qtdPessoas);
 void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z);
 void busca_masc(cadastro * pessoas, int qtdPessoas);
 void busca_sal(cadastro * pessoas, int qtdPessoas);
@@ -41,20 +42,18 @@ void Opcoes()
     printf("\n 6 - sair");   
 }
 
-
 int main()
 {  
     cadastro pessoas[5];
-    cadastro p;
+    //cadastro p;
     int opcao, qtdPessoas = 0;
-     do
+    do
     {
         Opcoes();
         scanf("%d", &opcao); 
         if (opcao == 1)
         {
-            preenche_pessoa(&p);
-            AdicionaPessoa(pessoas, p, qtdPessoas);
+            preenche_pessoa(pessoas,qtdPessoas);
             qtdPessoas++;  
         }
         if (opcao == 2)
@@ -77,53 +76,49 @@ int main()
     return 0;
 }
 
-void preenche_pessoa (cadastro * p)
+void preenche_pessoa (cadastro * pessoas, int qtdPessoas)
 {
     printf("\nDigite o nome da pessoa: ");
     fflush(stdin);
-    fgets(p->nome,30,stdin);
-    p->nome[strlen(p->nome)-1] = '\0';
+    fgets(pessoas[qtdPessoas].nome,30,stdin);
+    pessoas[qtdPessoas].nome[strlen(pessoas[qtdPessoas].nome)-1] = '\0';
     printf("\nDigite o endereço da pessoa: ");
     printf("\nRua: ");
     fflush(stdin);
-    fgets(p->casa->rua,30,stdin);
-    p->casa->rua[strlen(p->casa->rua)-1] = '\0';
+    fgets(pessoas[qtdPessoas].casa->rua,30,stdin);
+    pessoas[qtdPessoas].casa->rua[strlen(pessoas[qtdPessoas].casa->rua)-1] = '\0';
     printf("\nBairro: ");
     fflush(stdin);
-    fgets(p->casa->bairro,30,stdin);
-    p->casa->bairro[strlen(p->casa->bairro)-1] = '\0';
+    fgets(pessoas[qtdPessoas].casa->bairro,30,stdin);
+    pessoas[qtdPessoas].casa->bairro[strlen(pessoas[qtdPessoas].casa->bairro)-1] = '\0';
     printf("\nCidade: ");
     fflush(stdin);
-    fgets(p->casa->cidade,30,stdin);
-    p->casa->cidade[strlen(p->casa->cidade)-1] = '\0';
+    fgets(pessoas[qtdPessoas].casa->cidade,30,stdin);
+    pessoas[qtdPessoas].casa->cidade[strlen(pessoas[qtdPessoas].casa->cidade)-1] = '\0';
     printf("\nEstado: ");
     fflush(stdin);
-    fgets(p->casa->estado,30,stdin);
-    p->casa->estado[strlen(p->casa->estado)-1] = '\0';
+    fgets(pessoas[qtdPessoas].casa->estado,30,stdin);
+    pessoas[qtdPessoas].casa->estado[strlen(pessoas[qtdPessoas].casa->estado)-1] = '\0';
     printf("\nCep: ");
-    scanf("%ld",&p->casa->cep);
+    scanf("%ld",&pessoas[qtdPessoas].casa->cep);
     printf("\nDigite o salario da pessoa: ");
-    scanf("%lf",&p->salario); 
+    scanf("%lf",&pessoas[qtdPessoas].salario); 
     printf("\nDigite o cpf da pessoa: ");
-    scanf("%ld",&p->cpf);
+    scanf("%ld",&pessoas[qtdPessoas].cpf);
     printf("\nDigite o estado civil da pessoa: ");
     fflush(stdin);
-    fgets(p->estado_civil,30,stdin);
-    p->estado_civil[strlen(p->estado_civil)-1] = '\0';
+    fgets(pessoas[qtdPessoas].estado_civil,30,stdin);
+    pessoas[qtdPessoas].estado_civil[strlen(pessoas[qtdPessoas].estado_civil)-1] = '\0';
     printf("\nDigite o telefone da pessoa: ");
-    scanf("%ld",&p->telefone);
+    scanf("%ld",&pessoas[qtdPessoas].telefone);
     printf("\nDigite a idade da pessoa: ");
-    scanf("%d",&p->idade); 
+    scanf("%d",&pessoas[qtdPessoas].idade); 
     printf("\nDigite o sexo da pessoa(masc/fem): ");
     fflush(stdin);
-    fgets(p->sexo,30,stdin);
-    p->sexo[strlen(p->sexo)-1] = '\0';
+    fgets(pessoas[qtdPessoas].sexo,30,stdin);
+    pessoas[qtdPessoas].sexo[strlen(pessoas[qtdPessoas].sexo)-1] = '\0';
 }
 
-void AdicionaPessoa(cadastro * pessoas, cadastro p, int qtdPessoas)
-{
-    pessoas[qtdPessoas] = p;
-}
 void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z)
 {
     if(qtdPessoas==0){
