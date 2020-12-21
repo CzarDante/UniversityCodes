@@ -84,7 +84,6 @@ int main()
 
 void preenche_pessoa (cadastro * pessoas, int qtdPessoas)
 {
-
     printf("\nDigite o nome da pessoa: ");
     fflush(stdin);
     fgets(pessoas[qtdPessoas].nome,30,stdin);
@@ -131,50 +130,49 @@ void preenche_pessoa (cadastro * pessoas, int qtdPessoas)
     fgets(pessoas[qtdPessoas].sexo,10,stdin);
     pessoas[qtdPessoas].sexo[strlen(pessoas[qtdPessoas].sexo)-1] = '\0';
 }
-
 void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z)
 {
     if(qtdPessoas==0){
         printf("Nao a funcionarios\n");
     }
-    printf("\nnome: ");   
-    printf("%s",pessoas[z].nome);
-    printf("\nEndereço: ");
-    printf("\nRua: ");
-    printf("%s",pessoas[z].casa->rua);
-    printf("\nBairro: ");
-    printf("%s",pessoas[z].casa->bairro);
-    printf("\nCidade: ");
-    printf("%s",pessoas[z].casa->cidade);
-    printf("\nEstado: ");
-    printf("%s",pessoas[z].casa->estado);
-    printf("\nCep: ");
-    printf("%ld",pessoas[z].casa->cep);
-    printf("\nsalario: ");
-    printf("%0.2lf",pessoas[z].salario);
-    printf("\nid: ");
-    printf("%s",pessoas[z].id); 
-    printf("\ncpf: ");
-    printf("%s",pessoas[z].cpf);
-    printf("\nestado civil: ");
-    printf("%s",pessoas[z].estado_civil);
-    printf("\ntelefone: ");
-    printf("%ld",pessoas[z].telefone);
-    printf("\nidade: ");
-    printf("%d",pessoas[z].idade);
-    printf("\nsexo: ");
-    printf("%s",pessoas[z].sexo);  
+    else{
+        printf("\nnome: ");   
+        printf("%s",pessoas[z].nome);
+        printf("\nEndereço: ");
+        printf("\nRua: ");
+        printf("%s",pessoas[z].casa->rua);
+        printf("\nBairro: ");
+        printf("%s",pessoas[z].casa->bairro);
+        printf("\nCidade: ");
+        printf("%s",pessoas[z].casa->cidade);
+        printf("\nEstado: ");
+        printf("%s",pessoas[z].casa->estado);
+        printf("\nCep: ");
+        printf("%ld",pessoas[z].casa->cep);
+        printf("\nsalario: ");
+        printf("%0.2lf",pessoas[z].salario);
+        printf("\nid: ");
+        printf("%s",pessoas[z].id); 
+        printf("\ncpf: ");
+        printf("%s",pessoas[z].cpf);
+        printf("\nestado civil: ");
+        printf("%s",pessoas[z].estado_civil);
+        printf("\ntelefone: ");
+        printf("%ld",pessoas[z].telefone);
+        printf("\nidade: ");
+        printf("%d",pessoas[z].idade);
+        printf("\nsexo: ");
+        printf("%s",pessoas[z].sexo);
+    }  
 }
 void busca_masc(cadastro * pessoas, int qtdPessoas)
 {
     char masc[5]="masc";
-
     for(int z=0;z<qtdPessoas;z++){
         if(strcmp(pessoas[z].sexo,masc)==0){
             mostrar_pessoa(pessoas,qtdPessoas,z);
         }
     }
-    
 }
 void busca_sal(cadastro * pessoas, int qtdPessoas)
 {
@@ -183,9 +181,7 @@ void busca_sal(cadastro * pessoas, int qtdPessoas)
             mostrar_pessoa(pessoas,qtdPessoas,z);
         }
     }
-    
 }
-
 void busca_id(cadastro * pessoas, int qtdPessoas)
 {
     char buscaid[10];
