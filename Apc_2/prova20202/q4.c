@@ -73,7 +73,7 @@ int main()
         }
         if(opcao==9)
         {
-            for(int i=0;i<=qtdPessoas;i++){
+            for(int i=0;i<qtdPessoas;i++){
                 mostrar_pessoa(pessoas,qtdPessoas,i);
             }
         }
