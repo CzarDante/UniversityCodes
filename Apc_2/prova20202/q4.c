@@ -128,46 +128,6 @@ void preenche_pessoa (cadastro * p, int qtdP)
     fgets(p[qtdP].sexo,10,stdin);
     p[qtdP].sexo[strlen(p[qtdP].sexo)-1] = '\0';
 }
-void acha_vei(cadastro * pessoas, int qtdPessoas)
-{
-    int maior=0;
-    int posicao=0;
-    for(int i=0;i<qtdPessoas;i++){
-        if(pessoas[i].idade>maior){
-            maior=pessoas[i].idade;
-            posicao=i;
-        }
-    }
-    printf("\nnome: ");   
-    printf("%s",pessoas[posicao].nome);
-    printf("\nEndereco: ");
-    printf("\nRua: ");
-    printf("%s",pessoas[posicao].casa.rua);
-    printf("\nBairro: ");
-    printf("%s",pessoas[posicao].casa.bairro);
-    printf("\nCidade: ");
-    printf("%s",pessoas[posicao].casa.cidade);
-    printf("\nEstado: ");
-    printf("%s",pessoas[posicao].casa.estado);
-    printf("\nCep: ");
-    printf("%ld",pessoas[posicao].casa.cep);
-    printf("\nsalario: ");
-    printf("%0.2lf",pessoas[posicao].salario);
-    printf("\nid: ");
-    printf("%s",pessoas[posicao].id); 
-    printf("\ncpf: ");
-    printf("%s",pessoas[posicao].cpf);
-    printf("\nestado civil: ");
-    printf("%s",pessoas[posicao].estado_civil);
-    printf("\ntelefone: ");
-    printf("%ld",pessoas[posicao].telefone);
-    printf("\nidade: ");
-    printf("%d",pessoas[posicao].idade);
-    printf("\nsexo: ");
-    printf("%s",pessoas[posicao].sexo);
-    printf("\n");
-    
-}
 
 void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z)
 {
@@ -204,6 +164,23 @@ void mostrar_pessoa(cadastro * pessoas, int qtdPessoas, int z)
         printf("%s",pessoas[z].sexo);
         printf("\n");
     }  
+}
+void acha_vei(cadastro * pessoas, int qtdPessoas)
+{
+    int maior=0;
+    int posicao=0;
+    if(qtdPessoas==0){
+        printf("nao ha funcionarios\n");
+    }
+    else{    
+        for(int i=0;i<qtdPessoas;i++){
+            if(pessoas[i].idade>maior){
+                maior=pessoas[i].idade;
+                posicao=i;
+            }
+        }
+        mostrar_pessoa(pessoas,qtdPessoas,posicao);
+    }
 }
 void busca_masc(cadastro * pessoas, int qtdPessoas)
 {
