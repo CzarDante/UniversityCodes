@@ -38,13 +38,13 @@ void Opcoes()
     printf("\n 3 - Encontrar Pessoas do sexo masculino");
     printf("\n 4 - Encontrar pessoas com salario maior que 1000");
     printf("\n 5 - Encontrar por identidade");
-    printf("\n 6 - sair\n");   
+    printf("\n 6 - sair\n");
+    //9 - Mostra todos os cadastros;   
 }
 
 int main()
 {  
     cadastro pessoas[5];
-    //cadastro p;
     int opcao, qtdPessoas = 0;
     do
     {
@@ -80,7 +80,6 @@ int main()
     } while (opcao != 6);
     return 0;
 }
-
 void preenche_pessoa (cadastro * p, int qtdP)
 {
     printf("\nDigite o nome da pessoa: ");

@@ -6,7 +6,7 @@ red = "\03[1;31m"
 end = "\033[0;0m"
 for i in range(100000):
     num = i
-    #time.sleep(1)
+    time.sleep(0.1)
     if num%3==0:
         if num%5==0:
             print(Fore.RED + "fizz buzz")
