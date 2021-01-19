@@ -2,17 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-
 typedef struct alunos
 {
     int matricula;
     char nome[30];
     double media;
 }alunos;
-
 void preenche_alunos(alunos * p);
 void mostra_alunos(alunos p);
-
 int main()
 {
     int n;
@@ -21,23 +18,19 @@ int main()
     scanf("%d",&n);
     vet_aluno = (int*)malloc(sizeof(int)*n);
     int i;
-    
     for(i=0;i<n;i++)
     {
         preenche_alunos(&vet_aluno[i]);
     }
-    
     for(i=0;i<n;i++)
     {
         mostra_alunos(vet_aluno[i]);
     }
-
     printf("\n");
     return 0;
 }
 void preenche_alunos(alunos * p)
 {
-    
     int m;
     double notas=0, media=0,media_parcial=0;
     printf("\nDigite o nome da pessoa: ");
@@ -52,11 +45,9 @@ void preenche_alunos(alunos * p)
 	{
 		printf("nota %d: ",i);
 		scanf("%lf", &notas);
-		media_parcial+= notas;
-		
+		media_parcial+= notas;		
 	}
 	p->media=+media_parcial/m;
-    
 }
 void mostra_alunos(alunos p)
 {

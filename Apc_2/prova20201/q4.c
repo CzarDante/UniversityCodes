@@ -17,18 +17,13 @@ int main()
     int vet[10], i, x, y;
     vetores a;
     int opcao;
-
-    
-
     for (i = 0; i < 10; i++)
     {
         printf("\n Digite um numero: ");
         scanf("%d", &vet[i]);
     }
-
     x = 0;
     y = 0;
-
     for (i = 0; i < 10; i++)
     {
         if (verifica_primo(vet[i]))
@@ -42,22 +37,17 @@ int main()
             y++;
         }
     }
-
     menu(a,x,y);
-
     return 0;
 }
-
 void menu(vetores a, int qtd_primos, int qtd_n_primos)
 {
     int opcao;
-
     do
     {
         printf("\n 1 - Mostrar primos: ");
         printf("\n 2 - Mostrar nao primos: ");
         scanf("%d", &opcao);
-
         switch (opcao)
         {
         case 1:
@@ -78,16 +68,13 @@ void menu(vetores a, int qtd_primos, int qtd_n_primos)
 
     } while (opcao != 0);
 }
-
 int verifica_primo(int x)
 {
     int divisor;
-
     if (x == 1)
     {
         return 0;
     }
-
     for (divisor = 2; divisor < x; divisor++)
     {
         if (x % divisor == 0)
@@ -97,11 +84,9 @@ int verifica_primo(int x)
     }
     return 1;
 }
-
 void mostrar_vetor(int *vet, int tam)
 {
     int i;
-
     for (i = 0; i < tam; i++)
     {
         printf("\n %d", vet[i]);

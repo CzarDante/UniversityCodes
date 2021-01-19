@@ -7,7 +7,6 @@ void Opcoes()
     printf("\n 3 - Opcao 3");
     printf("\n 4 - Opcao 4\n");   
 }
-
 int main()
 {
     int opcao;
@@ -34,4 +33,3 @@ int main()
     } while (opcao != 0);
     return 0;
 }
-

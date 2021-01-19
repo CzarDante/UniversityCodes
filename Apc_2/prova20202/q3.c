@@ -22,9 +22,6 @@ void preenche_cadastro(carro * f);
 void AdicionaCarro(carro * carros, carro f, int qtd_carros);
 void ProcuraCarro(carro * carros, int qtd_carros, int revisoes_procurada);
 
-
-
-
 int main(){
 
     int N;

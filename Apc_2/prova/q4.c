@@ -5,7 +5,6 @@ typedef struct coordenada
 {
     int x,y;
 }coordenada;
-
 void preenche_cordenada(coordenada * x){
     printf("\nQual a cordenada x: ");
     scanf("%d",&x->x);
@@ -14,7 +13,6 @@ void preenche_cordenada(coordenada * x){
     scanf("%d",&x->y);
     printf("\n");
 }
-
 void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas){
     int somaxlista1 =0;
     int somaxlista2 =0;
@@ -28,7 +26,6 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
     int lista2quadrante2 =0;
     int lista2quadrante3 =0;
     int lista2quadrante4 =0;
-
     for(i=0;i<3;i++){
         somaxlista1 += lista1_coordenadas[i].x;
         somaylista1 += lista1_coordenadas[i].y;
@@ -44,7 +41,6 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
             if(somaxlista1<somaxlista2){
                 printf("lista 2 tem maior ocorencia em x\n");
             }
-
             if(somaylista1>somaylista2){
                 printf("lista 1 tem maior ocorencia em y\n");
             }
@@ -66,7 +62,6 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
         }if(lista1_coordenadas[i].x >0 && lista1_coordenadas[i].y <0 ){
             lista1quadrante4++;
         }
-
         if(lista2_coordenadas[i].x >0 && lista2_coordenadas[i].y >0 ){
             lista2quadrante1++;
         }if(lista2_coordenadas[i].x <0 && lista2_coordenadas[i].y >0 ){
@@ -114,8 +109,6 @@ void mostra_tudo(coordenada *lista1_coordenadas, coordenada * lista2_coordenadas
         printf("Lista 2 tem maior ocorrenciano 4 quadrante \n");
     }
 }
-
-
 int main()
 {
     coordenada lista1_coordenadas[3];
@@ -129,5 +122,4 @@ int main()
         preenche_cordenada(&lista2_coordenadas[i]);
     }
     mostra_tudo(lista1_coordenadas, lista2_coordenadas);
-
 }
