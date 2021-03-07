@@ -1,3 +1,8 @@
+/*
+Faça um programa que receba do usuário dois números N e M positivos inteiros do usuário. Aloque um vetor de N números inteiros, 
+preencha os N números. Para cada um dos N números mostre a diferença em relação a M:
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
