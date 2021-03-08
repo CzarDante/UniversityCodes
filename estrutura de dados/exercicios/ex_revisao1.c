@@ -14,9 +14,9 @@ E) Quantos cachorros são maiores do que 30 cm.
 
 typedef struct cachorro
 {
-    char nome[15];
-    char raca[15];
-    char cor[15];
+    char nome[30];
+    char raca[30];
+    char cor[30];
     int idade;
     float peso;
     float altura;
