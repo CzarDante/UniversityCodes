@@ -18,82 +18,53 @@ typedef struct sanduiche
     float avaliacao;
 }sanduiche;
 
-void preenche_vet(sanduiche * sanduiches, int qtdSanduiches);
-void acha_maiorAv(sanduiche * sanduiches, int qtdSanduiches);
-void encontraA(sanduiche *sanduiches, int qtdSanduiches);
-void media_peso(sanduiche *sanduiches, int qtdSanduiches);
-void compra_tres(sanduiche *sanduiches, int qtdSanduiches);
+void preenche_vet(sanduiche * sanduiches);
 
 int main()
 {
     int N;
     printf("Digite quantos sanduiches deseja alocar: ");
     scanf("%d", &N);
-    sanduiche sanduiches[N];
-    int qtdSanduiches = 0;
+    sanduiche * sanduiches;
+    sanduiches = (sanduiche*)calloc(N,sizeof(sanduiche));
     for(int i=0;i<N;i++)
     {
         printf("Sanduiche %d\n",i+1);
-        preenche_vet(sanduiches,qtdSanduiches);
-        qtdSanduiches++;
+        preenche_vet(&sanduiches[i]);
     }
-    acha_maiorAv(sanduiches,qtdSanduiches);
-    encontraA(sanduiches,qtdSanduiches);
-    media_peso(sanduiches,qtdSanduiches);
-    compra_tres(sanduiches, qtdSanduiches);
+    int maior=0,posicao=0;
+    printf("Sanduiches iniciados com a letra A:\n");
+    for(int i=0;i<N;i++){
+            if(sanduiches[i].nome[0]=='A'||sanduiches[i].nome[0]=='a'){
+                printf("%s",sanduiches[i].nome);
+            }
+            if(sanduiches[i].avaliacao>maior){
+                maior=sanduiches[i].avaliacao;
+                posicao=i;
+            }
+            
+            
+    }
+    printf("sanduiche melhor avaliado: %s",sanduiches[posicao].nome);
     return 0;
     printf("\n");
     return 0;
 }
 
-void preenche_vet(sanduiche * s, int qtdS)
+void preenche_vet(sanduiche * s)
 {
     printf("\nDigite o nome do sanduiche: ");
     fflush(stdin);
-    fgets(s[qtdS].nome,30,stdin);
-    s[qtdS].nome[strlen(s[qtdS].nome)-1] = '\0';
+    fgets(s->nome,30,stdin);
+    s->nome[strlen(s->nome)-1] = '\0';
     printf("\ndigite o valor: ");
-    scanf("%f",&s[qtdS].valor);
+    scanf("%f",&s->valor);
     printf("\ndigite o peso: ");
-    scanf("%f",&s[qtdS].peso);
+    scanf("%f",&s->peso);
     printf("\nDigite a avaliacao: ");
-    scanf("%f",&s[qtdS].avaliacao); 
+    scanf("%f",&s->avaliacao); 
 }
-void mostrar_sanduiches(sanduiche * sanduiches, int qtdSanduiches, int z)
-{
-    if(qtdSanduiches==0){
-        printf("Nao a sanduiches\n");
-    }
-    else{
-        printf("\nNome: ");   
-        printf("%s",sanduiches[z].nome);
-        printf("\nValor: ");
-        printf("%.2f",sanduiches[z].valor);
-        printf("\nPeso: ");
-        printf("%.2f",sanduiches[z].peso);
-        printf("\nAvaliacao: ");
-        printf("%.2f",sanduiches[z].avaliacao);
-        printf("\n");
-    }  
-}
-void acha_maiorAv(sanduiche * sanduiches, int qtdSanduiches)
-{
-    int maior=0;
-    int posicao=0;
-    if(qtdSanduiches==0){
-        printf("nao ha sanduiches\n");
-    }
-    else{    
-        for(int i=0;i<qtdSanduiches;i++){
-            if(sanduiches[i].avaliacao>maior){
-                maior=sanduiches[i].avaliacao;
-                posicao=i;
-            }
-        }
-        printf("\nSanduiche melhor avaliado: ");
-        mostrar_sanduiches(sanduiches,qtdSanduiches,posicao);
-    }
-}
+
 void encontraA(sanduiche *sanduiches, int qtdSanduiches)
 {
     char A[1]="A";
