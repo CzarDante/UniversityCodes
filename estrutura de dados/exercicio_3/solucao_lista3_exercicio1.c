@@ -21,6 +21,8 @@ typedef struct registro
     struct registro *ant;
 } registro;
 
+int is_primo(int x);
+int remover_todos_primos(lista *l);
 lista *aloca_lista();
 registro *aloca_registro();
 void mostrar(lista *l, int inverso);
@@ -46,6 +48,7 @@ lista *aloca_lista()
     novo = (lista *)malloc(sizeof(lista));
     novo->qtd = 0;
     novo->inicio = NULL;
+    novo->fim =NULL;
     return novo;
 }
 
@@ -76,6 +79,14 @@ void mostrar(lista *l, int inverso)
             printf("\n %d", aux->valor);
             aux = aux->prox;
         }
+    }else{
+        aux = l->fim;
+        while (aux!=NULL)
+        {
+            printf("\n %d", aux->valor);
+            aux = aux->ant;
+        }
+        
     }
 }
 
@@ -85,7 +96,7 @@ void menu(lista *l)
     do
     {
         printf("\n1 - Mostrar lista");
-        printf("\n2 - Remove primos");
+        printf("\n2 - Remove todos os primos");
         printf("\n3 - Remove iguais");
         printf("\n4 - Busca numero");
         printf("\n5 - Compara 2 listas");
@@ -95,11 +106,13 @@ void menu(lista *l)
         switch (opcao)
         {
         case 1:
-            mostrar(l, 0);
+            printf("\n0-Para imprimir da frente pra traz\n");
+            printf("\n1-Para imprimir de traz pra frente\n");
+            scanf("%d",&x);
+            mostrar(l, x);
             break;
         case 2:
-            // remove_primos(l);
-            printf("\nNao implementado\n");
+            remover_todos_primos(l);
             break;
         case 3:
             remove_todos(l);
@@ -134,7 +147,7 @@ void incluir_ordenado(lista *l, int x)
     novo = aloca_registro();
     novo->valor = x;
     
-    if(l->inicio == NULL)
+    if(l->inicio == NULL && l->fim == NULL)
     {
         l->inicio = novo;
         l->fim =novo;
@@ -177,7 +190,7 @@ void remove_todos(lista *l)
     }
     registro *aux = NULL, *ant = NULL;
     aux = l->inicio;
-    while(aux != l->fim)
+    while(aux->prox != NULL)
     {
         if(aux->valor==aux->prox->valor){
             if(ant==NULL){
@@ -232,36 +245,60 @@ void busca_numero(lista *l1, int x)
     return 0;
 }
 
-// void remove_primos(lista *l)
-// {
-//     if (l->inicio == NULL)
-//     {
-//         return 0;
-//     }
-//     registro *aux = NULL, *ant = NULL;
-//     aux = l->inicio;
-//     while(aux != l->fim)
-//     {   
-//         int primo=0;
-//         for(int i=0;i<=17;i++){
-//             if (aux->valor%i==0)
-//             {
-//                 primo++;
-//             }
-//         }if(primo==0){
-//             if(ant==NULL){
-//                 printf("removido o numero %d\n",aux->valor);
-//                 l->inicio = aux->prox;
-//                 aux=aux->prox;          
-//             }else{
-//                 printf("removido o numero %d\n",aux->valor);
-//                 ant->prox=aux->prox;
-//                 aux=aux->prox;
-//                 aux->ant=ant;
-//             }
-//         }else{
-//             ant = aux;
-//             aux = aux->prox;
-//         }
-//     }
-// }
+int is_primo(int x)
+{
+    if (x==0 || x==1)
+        return 0;
+    
+    int div;
+    for(div=2;div<x;div++)
+    {
+        if (x%div==0)
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int remover_todos_primos(lista *l)
+{
+    if (l->inicio == NULL)
+    {
+        return 0;
+    }
+
+    registro *aux = NULL, *ant = NULL;
+
+    aux = l->inicio;
+    while (aux != NULL)
+    {
+        if (is_primo(aux->valor))
+        {
+            if (ant == NULL)
+            {
+                printf("removido o numero %d\n",aux->valor);
+                l->inicio = aux->prox;
+            }
+            else
+            {
+                printf("removido o numero %d\n",aux->valor);
+                ant->prox = aux->prox;
+            }
+            l->qtd--;
+            free(aux);
+
+            if (ant == NULL)
+                aux = l->inicio;
+            else
+                aux = ant->prox;
+        }
+        else
+        {
+            ant = aux;
+            aux = aux->prox;
+        }
+    }
+
+    return 0;
+}
