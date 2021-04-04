@@ -247,9 +247,9 @@ void busca_numero(lista *l1, int x)
 
 int is_primo(int x)
 {
-    if (x==0 || x==1)
+    if (x==0 || x==1){
         return 0;
-    
+    }
     int div;
     for(div=2;div<x;div++)
     {
