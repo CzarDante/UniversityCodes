@@ -109,7 +109,7 @@ int pop()
 
 int inverte()
 {
-    if(topo==0){
+    if(empty()){
         printf("\nPilha Vazia");
     }else{
         int aux=topo-1;
@@ -141,8 +141,8 @@ int stackpop()
 
 int debug_pilha()
 {
-    int z=topo;
-    for (int i = 0; i <= topo; i++)
+    int z=topo-1;
+    for (int i = 0; i < topo; i++)
             {
                 printf("%d\n",pilha[z]);
                 z--;
