@@ -4,44 +4,16 @@
 typedef struct lista
 {
     int qtd;
-    struct registro *inicio;
-} lista;
+    int *inicio;
+    int *fim;
+}lista;
 
 typedef struct registro
 {
-    int valor;
-    struct registro *prox;
-} registro;
-
-lista *aloca_lista();
-registro *aloca_registro();
-void incluir_no_final(lista *l, int x);
-void mostrar_lista(lista *l);
-
-int main()
-{
-    lista *lista_par, *lista_impar;
-    int x = 0;
-    lista_par = aloca_lista();
-    lista_impar = aloca_lista();
-    for(int i=0;i<10;i++)
-    {
-        printf("\n Qual numero deseja inserir?");
-        scanf("%d", &x);
-        if(x%2==0){
-            incluir_no_final(lista_par, x);
-        }
-        else{
-            incluir_no_final(lista_impar, x);
-        }   
-    }
-    printf("\nNumeros pares: ");
-    mostrar_lista(lista_par);
-    printf("\nNumeros impares: ");
-    mostrar_lista(lista_impar);
-    printf("\n");
-    return 0;
-}
+    int *valor;
+    int *ant;
+    int *prox;
+}registro;
 
 lista *aloca_lista()
 {
@@ -66,6 +38,7 @@ void incluir_no_final(lista *l, int x)
     registro *novo, *aux;
     novo = aloca_registro();
     novo->valor = x;
+
     if (l->inicio == NULL)
     {
         l->inicio = novo;
@@ -92,6 +65,7 @@ void mostrar_lista(lista *l)
     {
         registro *aux;
         aux = l->inicio;
+
         while (aux != NULL)
         {
             printf("\nValor = %d", aux->valor);

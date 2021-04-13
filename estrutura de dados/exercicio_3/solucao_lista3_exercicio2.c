@@ -36,7 +36,6 @@ void remove_chassi(carro *c,int qtdC);
 void acha_antigo(carro *c, int qtdC);
 void acha_caro(carro *c, int qtdC);
 
-
 int main()
 {
     carro *carros;

@@ -107,25 +107,6 @@ int pop()
     }
 }
 
-int inverte()
-{
-    if(empty()){
-        printf("\nPilha Vazia");
-    }else{
-        int aux=topo-1;
-        for(int i=0;i<topo;i++){
-            invertida[i]=pilha[aux];
-            aux--;
-        }
-        for (int i = 0; i < topo; i++)
-        {
-            pilha[i]=invertida[i];
-        }
-
-        
-    }
-}
-
 int stackpop()
 {
     if (empty())
