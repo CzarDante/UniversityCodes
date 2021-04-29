@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-int dec = 0, bin = 0, binario[50], hexa = 0, oct = 0;
+int dec = 0, bin = 0, binario[70], hexa = 0, oct = 0;
 int i = 0, j;
 int divisor = 1;
 int res[7];
