@@ -24,5 +24,4 @@ class informacao:
                 return 'Estado: ' + content['name'] + '\nTaxa de ocupação: ' + content['taxa_ocupacao'] + '\nUltima atualização: ' + content['ultima_att'] + '\nFonte: ' + content['fonte'] + '\n'
         return '0' 
 
-
 dados = informacao(API_KEY,PROJECT_TOKEN)
