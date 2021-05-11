@@ -29,8 +29,8 @@ int main()
         Ticks[1] = clock();
         // mostrar_vetor(vet,tam); 
         double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
-        printf("\tTempo gasto: %g ms.", Tempo);
-        fprintf(arq,"%lld;%.9f\n",tam,Tempo);
+        printf("\tTempo gasto: %.1g ms.", Tempo);
+        fprintf(arq,"%lld;%.1f\n",tam,Tempo);
         free(vet);
         
     }
