@@ -7,10 +7,36 @@ Monte um gráfico demonstrando a curva de aumento de tempo em relação ao aumen
 
 long long int *cria_vetor(long long int n);
 void mostrar_vetor(long long int *vet, long long int tam);
+void selectionsort(long long int *vet, long long int tam);
 
-
-
-
+int main()
+{
+    clock_t Ticks[2];
+    long long int *vet;
+    long long int tam;
+    srand(time(NULL));
+    FILE * arq;
+    arq = fopen("tempos_selection.csv","a+");
+    if ( arq==NULL)
+        return 0;
+    for (tam = 1000; tam <= 50000; tam = tam + 1000)
+    {
+        printf("\n Tamanho do vetor: %lld",tam);
+        vet = cria_vetor(tam);
+        // mostrar_vetor(vet,tam);     
+        Ticks[0] = clock();
+        selectionsort(vet,tam);
+        Ticks[1] = clock();
+        // mostrar_vetor(vet,tam); 
+        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
+        printf("\tTempo gasto: %g ms.", Tempo);
+        fprintf(arq,"%lld;%.9f\n",tam,Tempo);
+        free(vet);
+    }
+    fclose(arq);
+    printf("\n");
+    return 0;
+}
 
 long long int *cria_vetor(long long int n)
 {
@@ -41,4 +67,26 @@ void mostrar_vetor(long long int *vet, long long int tam)
     {
         printf(" %lld", vet[i]);
     }
+}
+
+void selectionsort(long long int *vet, long long int tam)
+{
+    int i,j,menor;
+    for(i=0;i<tam-1;i++)
+    {
+        for(j=i+1;j<tam;j++)
+        {
+            if(vet[i]>vet[j])
+            {
+                menor=j;
+            }
+        }
+        if(menor!=i){
+            int aux;
+            aux=vet[menor];
+            vet[menor]=vet[i];
+            vet[i]=aux;
+        }
+    }
+
 }

@@ -16,12 +16,10 @@ int main()
     long long int tam;
     srand(time(NULL));
     FILE * arq;
-
-    arq = fopen("tempos.csv","a+");
+    arq = fopen("tempos_insertion.csv","a+");
     if ( arq==NULL)
         return 0;
-
-    for (tam = 100; tam <= 10000; tam = tam + 100)
+    for (tam = 1000; tam <= 50000; tam = tam + 1000)
     {
         printf("\n Tamanho do vetor: %lld",tam);
         vet = cria_vetor(tam);
@@ -30,14 +28,13 @@ int main()
         insertionsort(vet,tam);
         Ticks[1] = clock();
         // mostrar_vetor(vet,tam); 
-        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC)/1000000.0;
+        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
         printf("\tTempo gasto: %g ms.", Tempo);
         fprintf(arq,"%lld;%.9f\n",tam,Tempo);
         free(vet);
         
     }
     fclose(arq);
-
     printf("\n");
     return 0;
 }
@@ -78,17 +75,14 @@ void insertionsort(long long int *vet, long long int tam)
     int i=1;
     int j;
     long long int aux;
-    while (i<tam)
+    for(i=1;i<=tam-1;i++)
     {
-        j=i;
-        while (j>0 && vet[j-1]>vet[j])
+        for (j=i;j>0 && vet[j-1]>vet[j];j++)
         {
             aux = vet[j];
             vet[j]=vet[j-1];
             vet[j-1]=aux;
-            j--;
         }
-        i++;
     }
     
 }
