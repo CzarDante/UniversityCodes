@@ -3,7 +3,7 @@ import json
 
 API_KEY="ttARBxNqq2oV"
 PROJECT_TOKEN = "tNmBTD1qFpYz"
-RUN_TOKEN ="t-xeQ_x1-tGk"
+RUN_TOKEN ="t0Ot2G6eDU89"
 
 class informacao:
     def __init__(self,api_key,PROJECT_TOKEN):
