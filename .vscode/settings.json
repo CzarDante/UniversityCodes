@@ -4,6 +4,7 @@
     "python.pythonPath": "C:\\Users\\duduc\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
     "files.associations": {
         "stack": "cpp",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "time.h": "c"
     }
 }
