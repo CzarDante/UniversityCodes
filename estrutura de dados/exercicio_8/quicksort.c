@@ -14,8 +14,8 @@ int main()
     long long int tam;
     srand(time(NULL));
     FILE * arq;
-
-    arq = fopen("tempos.csv","a+");
+    clock_t Ticks[2];
+    arq = fopen("tempos_quick.csv","a+");
     if ( arq==NULL)
         return 0;
 
@@ -26,9 +26,9 @@ int main()
         Ticks[0] = clock();
         quickSort(vet, 0, (tam-1));
         Ticks[1] = clock();
-        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC)/1000000.0;
-        printf("\tTempo gasto: %g ms.", Tempo);
-        fprintf(arq,"%lld;%.9f\n",tam,Tempo);
+        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
+        printf("\tTempo gasto: %.1g ms.", Tempo);
+        fprintf(arq,"%lld;%.1f\n",tam,Tempo);
         free(vet);
         
     }

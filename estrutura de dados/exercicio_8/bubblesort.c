@@ -14,8 +14,8 @@ int main()
     srand(time(NULL));
     double t1,t2;
     FILE * arq;
-
-    arq = fopen("tempos.csv","a+");
+    clock_t Ticks[2];
+    arq = fopen("tempos_bubblesort.csv","a+");
     if ( arq==NULL)
         return 0;
 
@@ -25,11 +25,12 @@ int main()
         vet = cria_vetor(tam);
         // printf("\n Vetor desordenado: ");
         // mostrar_vetor(vet, tam);
-        t1 = omp_get_wtime();
+        Ticks[0] = clock();
         bubblesort(vet, tam);
-        t2 = omp_get_wtime();
-        printf("\n Tempo para ordenar: %f",t2-t1);
-        fprintf(arq,"%lld;%f\n",tam,t2-t1);
+        Ticks[1] = clock();
+        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
+        printf("\tTempo gasto: %.1g ms.", Tempo);
+        fprintf(arq,"%lld;%.1f\n",tam,Tempo);
         // printf("\n Vetor Ordenado: ");
         // mostrar_vetor(vet, tam);
         free(vet);

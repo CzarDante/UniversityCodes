@@ -19,20 +19,17 @@ int main()
     arq = fopen("tempos_insertion.csv","a+");
     if ( arq==NULL)
         return 0;
-    for (tam = 1000; tam <= 50000; tam = tam + 1000)
+    for (tam = 10000; tam <= 200000; tam = tam + 10000)
     {
         printf("\n Tamanho do vetor: %lld",tam);
-        vet = cria_vetor(tam);
-        // mostrar_vetor(vet,tam);     
+        vet = cria_vetor(tam);   
         Ticks[0] = clock();
         insertionsort(vet,tam);
         Ticks[1] = clock();
-        // mostrar_vetor(vet,tam); 
         double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
         printf("\tTempo gasto: %.1g ms.", Tempo);
         fprintf(arq,"%lld;%.1f\n",tam,Tempo);
         free(vet);
-        
     }
     fclose(arq);
     printf("\n");
