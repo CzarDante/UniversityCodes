@@ -3,7 +3,6 @@ Monte um gráfico demonstrando a curva de aumento de tempo em relação ao aumen
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "omp.h"
 
 long long int *cria_vetor(long long int n);
 void mostrar_vetor(long long int *vet, long long int tam);
@@ -11,7 +10,6 @@ void insertionsort(long long int *vet, long long int tam);
 
 int main()
 {
-    clock_t Ticks[2];
     long long int *vet;
     long long int tam;
     srand(time(NULL));
@@ -19,16 +17,23 @@ int main()
     arq = fopen("tempos_insertion.csv","a+");
     if ( arq==NULL)
         return 0;
-    for (tam = 10000; tam <= 200000; tam = tam + 10000)
+    for (tam = 1000; tam <= 50000; tam += 1000)
     {
         printf("\n Tamanho do vetor: %lld",tam);
-        vet = cria_vetor(tam);   
-        Ticks[0] = clock();
+        vet = cria_vetor(tam);
+        clock_t begin = clock();
+
+        double time_spent= 0.0;
+ 
         insertionsort(vet,tam);
-        Ticks[1] = clock();
-        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
-        printf("\tTempo gasto: %.1g ms.", Tempo);
-        fprintf(arq,"%lld;%.1f\n",tam,Tempo);
+ 
+        clock_t end = clock();
+        time_spent = (double)(end - begin) / CLOCKS_PER_SEC; 
+        printf("\tThe elapsed time is %f seconds", time_spent);
+        
+        // double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
+        // printf("\tTempo gasto: %f s", Tempo);
+        fprintf(arq,"%lld;%f\n",tam,time_spent);
         free(vet);
     }
     fclose(arq);
@@ -69,8 +74,8 @@ void mostrar_vetor(long long int *vet, long long int tam)
 
 void insertionsort(long long int *vet, long long int tam)
 {
-    int i=1;
-    int j;
+    long long int i=1;
+    long long int j;
     long long int aux;
     for(i=1;i<=tam-1;i++)
     {
