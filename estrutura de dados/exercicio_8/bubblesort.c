@@ -28,9 +28,9 @@ int main()
         Ticks[0] = clock();
         bubblesort(vet, tam);
         Ticks[1] = clock();
-        double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
-        printf("\tTempo gasto: %.1g ms.", Tempo);
-        fprintf(arq,"%lld;%.1f\n",tam,Tempo);
+        double Tempo = ((Ticks[1] - Ticks[0]) / 1000000.0F );
+        printf("\tTempo gasto: %lf ms.", Tempo);
+        // fprintf(arq,"%lld;%lf\n",tam,Tempo);
         // printf("\n Vetor Ordenado: ");
         // mostrar_vetor(vet, tam);
         free(vet);

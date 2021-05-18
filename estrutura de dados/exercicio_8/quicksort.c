@@ -69,37 +69,58 @@ void mostrar_vetor(long long int *vet, long long int tam)
     }
 }
 
-void quickSort(long long int *vet, long long int inicio, long long int fim){ 
-	if(inicio < fim){ 
-		char pivot = vet[(inicio + fim) / 2];
-        char temp;
-        long long int i = inicio;
-        long long int f = fim;
-		while (i <= f) {
-            while ((vet[i] < pivot) && (i < fim)) {
-                i++;
+void quickSort(long long int *vet, long long int inicio, long long int fim) 
+{
+    if (inicio>=fim)
+    {
+        return;
+    }
+
+    long long int pivo,aux,aux_troca;
+
+    pivo = inicio;
+    aux = fim;
+
+    while(pivo!=aux)
+    {
+        if (pivo<aux)
+        {
+            if (vet[pivo]>vet[aux])
+            {
+                aux_troca = vet[pivo];
+                vet[pivo] = vet[aux];
+                vet[aux] = aux_troca;
+                aux_troca = pivo;
+                pivo = aux;
+                aux = aux_troca;
+            }
+        } 
+        else
+        {
+            if (vet[pivo]<vet[aux])
+            {
+                aux_troca = vet[pivo];
+                vet[pivo] = vet[aux];
+                vet[aux] = aux_troca;
+                aux_troca = pivo;
+                pivo = aux;
+                aux = aux_troca;
             }
 
-            while ((vet[f] > pivot) && f > inicio) {
-                f--;
-            }
-
-            if (i <= f) {
-                temp = vet[i];
-                vet[i] = vet[f];
-                vet[f] = temp;
-
-                i++;
-                f--;
-            }
-        }
-        if (inicio < f) {
-            quickSort(vet, inicio, f);
         }
 
-        if (i < fim) {
-            quickSort(vet, i, fim);
+        if (pivo<aux)
+        {
+            aux --;
         }
-	}
+        else
+        {
+            aux ++;
+        }
+    }
+
+    quicksort(vet,inicio,pivo-1);
+    quicksort(vet,pivo+1,fim);
+
 }
 

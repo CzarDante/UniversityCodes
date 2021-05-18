@@ -69,24 +69,22 @@ void mostrar_vetor(long long int *vet, long long int tam)
     }
 }
 
-void selectionsort(long long int *vet, long long int tam)
+void selectionsort(long long int * vet, long long int tam)
 {
-    int i,j,menor;
+    long long int i,j,ind_menor,aux;
+
     for(i=0;i<tam-1;i++)
     {
+        ind_menor = i;
         for(j=i+1;j<tam;j++)
         {
-            if(vet[i]>vet[j])
+            if (vet[j]<vet[ind_menor])
             {
-                menor=j;
+                ind_menor = j;
             }
         }
-        if(menor!=i){
-            int aux;
-            aux=vet[menor];
-            vet[menor]=vet[i];
-            vet[i]=aux;
-        }
+        aux = vet[i];
+        vet[i] = vet[ind_menor];
+        vet[ind_menor] = aux;
     }
-
 }

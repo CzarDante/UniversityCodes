@@ -12,28 +12,25 @@ int main()
 {
     long long int *vet;
     long long int tam;
+    clock_t begin, end;
     srand(time(NULL));
     FILE * arq;
-    arq = fopen("tempos_insertion.csv","a+");
+    arq = fopen("tempos_insertion.csv","w");
     if ( arq==NULL)
         return 0;
-    for (tam = 1000; tam <= 50000; tam += 1000)
+    for (tam = 10000; tam <= 90000; tam += 1000)
     {
         printf("\n Tamanho do vetor: %lld",tam);
         vet = cria_vetor(tam);
-        clock_t begin = clock();
-
-        double time_spent= 0.0;
+        begin = clock();
  
         insertionsort(vet,tam);
  
-        clock_t end = clock();
-        time_spent = (double)(end - begin) / CLOCKS_PER_SEC; 
-        printf("\tThe elapsed time is %f seconds", time_spent);
+        end = clock();
+        float time_spent = (((float)end - (float)begin) / 1000000.0F); 
+        printf("\tTempo gasto: %lf ms", time_spent);
         
-        // double Tempo = ((Ticks[1] - Ticks[0]) *1000 / CLOCKS_PER_SEC);
-        // printf("\tTempo gasto: %f s", Tempo);
-        fprintf(arq,"%lld;%f\n",tam,time_spent);
+        fprintf(arq,"%lld;%lf\n",tam,time_spent);
         free(vet);
     }
     fclose(arq);
@@ -72,19 +69,17 @@ void mostrar_vetor(long long int *vet, long long int tam)
     }
 }
 
-void insertionsort(long long int *vet, long long int tam)
+void insertionsort(long long int * vet, long long int tam)
 {
-    long long int i=1;
-    long long int j;
-    long long int aux;
-    for(i=1;i<=tam-1;i++)
+    long long int i,j,aux;
+
+    for(i=1;i<tam;i++)
     {
-        for (j=i;j>0 && vet[j-1]>vet[j];j++)
+        aux = vet[i];
+        for(j=i-1;j>=0 && vet[j]>aux;j--)
         {
-            aux = vet[j];
-            vet[j]=vet[j-1];
-            vet[j-1]=aux;
+            vet[j+1] = vet[j];
         }
+        vet[j+1] = aux;
     }
-    
 }
