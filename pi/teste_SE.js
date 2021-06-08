@@ -1,16 +1,16 @@
 const puppeteer = require('puppeteer');
 
-async function pega_dados(){
-    const browser = await puppeteer.launch();
+(async() =>{
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto('https://datastudio.google.com/embed/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/ROITB', {
     waitUntil: 'networkidle0',
   });
 
-  var dados_total;
+  var teste;
 
-  let dados1 = await page.evaluate(() => {
-    const dados_raw = [];
+  let DF = await page.evaluate(() => {
+    const testando = [];
 
     for (let i = 0; i < 189; i++) {
       let sigla = document.querySelectorAll('.cell')[i].innerText;
@@ -18,7 +18,7 @@ async function pega_dados(){
       let ultimatt = document.querySelectorAll('.cell')[i += 1].innerText;
       let fonte = document.querySelectorAll('.cell')[i += 1].innerText;
 
-      dados_raw.push({
+      testando.push({
         sigla,
         ocupacao,
         ultimatt,
@@ -26,17 +26,18 @@ async function pega_dados(){
       });
     }
 
-    return dados_raw;
+    return testando;
   });
 
-  dados_total = dados1;
+  teste = DF;
 
   await page.goto('https://datastudio.google.com/embed/reporting/2f2537fa-ac23-4f08-8741-794cdbedca03/page/CPFTB%27,%7B', {
     waitUntil: 'networkidle0',
   });
+  var resto_dados;
 
-  let dados2 = await page.evaluate(() => {
-    const dados_raw = [];
+  let dados = await page.evaluate(() => {
+    const testando = [];
 
     for (let i = 0; i <= 349; i++) {
       let sigla = document.querySelectorAll('.cell')[i].innerText
@@ -46,7 +47,7 @@ async function pega_dados(){
       let pop_vac = document.querySelectorAll('.cell')[i += 4].innerText;
       i += 1;
 
-      dados_raw.push({
+      testando.push({
         sigla,
         total_casos,
         total_obitos,
@@ -55,26 +56,26 @@ async function pega_dados(){
       });
     }
 
-    return dados_raw;
+    return testando;
   });
+  resto_dados = dados;
   
   
   for(let i = 0; i<27;i++){
     for(let j =0 ; j<=26;j++){
 
-      if(dados_total[i].sigla===dados2[j].sigla){
+      if(teste[i].sigla===resto_dados[j].sigla){
         
-        dados_total[i].total_casos = dados2[j].total_casos;
-        dados_total[i].total_obitos = dados2[j].total_obitos;
-        dados_total[i].recuperados = dados2[j].recuperados;
-        dados_total[i].pop_vac = dados2[j].pop_vac;
+        teste[i].total_casos = resto_dados[j].total_casos;
+        teste[i].total_obitos = resto_dados[j].total_obitos;
+        teste[i].recuperados = resto_dados[j].recuperados;
+        teste[i].pop_vac = resto_dados[j].pop_vac;
       }
     }
 
   }
 
-  console.log(dados_total);
+  console.log(teste);
 
   await browser.close();
-}
-pega_dados();
+})
