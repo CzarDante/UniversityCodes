@@ -1,0 +1,9 @@
+Sem filhos:
+    Tira o elemento da arvore
+
+1 filho 
+    O filho herda a posição do pai.
+
+2 filhos
+    O maior decendente a esquerda do elemento removido assume a posicao.
+    O menor descendente a direita do elemento removido assume a posição.
