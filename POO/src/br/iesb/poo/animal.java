@@ -9,4 +9,13 @@ public class animal{
     void emitirSom(){
 
     }
+    void dormir(){
+
+    }
+    void caminhar(){
+
+    }
+    void main(String[] args){
+
+    }
 }
