@@ -49,7 +49,6 @@
  43                     HALT                    Suspende o programa completou sua tarefa.
 */
 package br.iesb.poo;
-
 import java.util.Scanner;
 
 public class Simpletron {
@@ -58,6 +57,12 @@ public class Simpletron {
     int mem[] = new int [100];
     int instrução = 0;
     int QtdInstrucoes = 0;
+    private boolean run = true;
+
+    public void starta(){
+        Mensage();
+        program();
+    }
 
     void add(int position){
         acc += mem[position];
@@ -83,39 +88,30 @@ public class Simpletron {
         mem[position] = acc;
     }
 
+
     public void Mensage()
     {
-        System.out.printf("\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
-                "***Bem Vindo ao Simpletron!***",
-                "***Por favor insira uma instrução (ou data word)***",
-                "***por vez em seu programa. Eu vou digitar o número***",
-                "***o número de alocação e o ponto de interrogação(?).***",
-                "***Então você digita a palavra para a alocação.***",
-                "***Digite o número -9999 para parar/indicar o fim do***",
-                "***seu programa.***");
+        System.out.println("***              Bem Vindo ao Simpletron!             ***");
+        System.out.println("***   Por favor insira uma instrução (ou data word)   ***");
+        System.out.println("*** o número de alocação e o ponto de interrogação(?).***");
+        System.out.println("***   Então você digita a palavra para a alocação.    ***");
+        System.out.println("*** Digite o número -9999 para parar/indicar o fim do ***");
+        System.out.println("***                  seu programa.                    ***");
     }
 
-    public void simpletron()
+    public void program()
     {
         Scanner input = new Scanner(System.in);
         do
         {
-            System.out.printf("%d %s", QtdInstrucoes, "?");
+            System.out.printf("%02d ?", QtdInstrucoes);
             instrução = input.nextInt();
             if(instrução != -9999)
-                memoria[QtdInstrucoes] = instrução;
+                mem[QtdInstrucoes] = instrução;
             QtdInstrucoes++;
         }while(instrução != -9999);
+        System.out.println("***          Programa carregado    ***");
+        System.out.println("***Iniciando a execução do programa***");
 
-        System.out.printf("\n%s%s","***Programa carregado***\n",
-                "***Iniciando a execução do programa***"
-        );
-        for(int code:memoria)
-        {
-            if(code!= 0)
-            {
-
-            }
-        }
     }
 }
