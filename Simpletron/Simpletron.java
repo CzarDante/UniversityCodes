@@ -48,48 +48,28 @@
  42                     BRANCHZERO    Desvia para uma posição específica na memória se o acumulador for zero.
  43                     HALT                    Suspende o programa completou sua tarefa.
 */
-package br.iesb.poo;
-import java.util.Scanner;
+/**
+ * @author CzarDante
+ * @version 1.0
+ */
 
 public class Simpletron {
-    int ip = 0;
     int acc =0;
     int mem[] = new int [100];
-    int instrução = 0;
-    int QtdInstrucoes = 0;
+    int instructions = 0;
+    int QtdInstructions = 0;
+    int operationCode;
+    int operand;
+    int registe;
+    int counter = 0;
     private boolean run = true;
 
     public void starta(){
-        Mensage();
+        Message();
         program();
     }
 
-    void add(int position){
-        acc += mem[position];
-    }
-
-    void load(int position)
-    {
-        acc = mem[position];
-    }
-
-    void read(int position){
-        Scanner input = new Scanner ( System.in );
-        int dado = input.nextInt();
-        input.close();
-        mem[position] = dado;
-    }
-
-    void write(int position){
-        System.out.println(mem[position]);
-    }
-
-    void store(int position){
-        mem[position] = acc;
-    }
-
-
-    public void Mensage()
+    public void Message()
     {
         System.out.println("***              Bem Vindo ao Simpletron!             ***");
         System.out.println("***   Por favor insira uma instrução (ou data word)   ***");
@@ -104,14 +84,80 @@ public class Simpletron {
         Scanner input = new Scanner(System.in);
         do
         {
-            System.out.printf("%02d ?", QtdInstrucoes);
-            instrução = input.nextInt();
-            if(instrução != -9999)
-                mem[QtdInstrucoes] = instrução;
-            QtdInstrucoes++;
-        }while(instrução != -9999);
+            System.out.printf("%02d ?", QtdInstructions);
+            instructions = input.nextInt();
+            mem[QtdInstructions] = instructions;
+            QtdInstructions++;
+        }while(instructions != -9999);
         System.out.println("***          Programa carregado    ***");
         System.out.println("***Iniciando a execução do programa***");
 
+        while (run){
+            loadCode();
+            operation(operationCode,operand);
+        }
+        System.exit(0);
+    }
+    void loadCode(){
+        register = mem[counter];
+        operationCode = register / 100;
+		operand = register % 100;
+        counter++;
+        if(register == (-9999) ){
+            System.out.println("Exit Code\n");
+            System.exit(0);
+        }
+    }
+    void operation(int operationCode, int operand){
+        switch (operationCode) {
+            case 10:
+                Scanner input = new Scanner (System.in);
+                int dado = input.nextInt();
+                input.close();
+                mem[operand] = dado;
+                break;
+            case 11:
+                System.out.println(mem[operand]);
+                break;
+            case 20:
+                acc = mem[operand];
+                break;
+            case 21:
+                mem[operand] = acc;
+                break;
+            case 30:
+                acc += mem[operand];
+                break;
+            case 31:
+                acc -= mem[operand];
+                break;
+            case 32:
+                acc = mem[operand]/acc;
+                break;
+            case 33:
+                acc = mem[operand] * acc;
+                break;
+            case 40:
+                counter = operand;
+                break;
+            case 41:
+                if(acc < 0){
+                    counter = operand;
+                };
+                break;
+            case 42:
+                if(acc==0){
+                    counter = operand;
+                };
+                break;
+            case 43:
+                System.out.println("Saindo do Programa\n");
+                run=false;
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Operation Code invalido\n");
+                break;
+        }
     }
 }
