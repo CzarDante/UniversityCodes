@@ -52,6 +52,7 @@
  * @author CzarDante
  * @version 1.0
  */
+import java.util.Scanner;
 
 public class Simpletron {
     int acc =0;
