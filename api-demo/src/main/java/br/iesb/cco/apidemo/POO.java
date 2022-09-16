@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class POO {
 
+public class POO {
     @GetMapping("/poo")
     String hello(){
-        return "Enviando dados para VC";
+        return "Hello World!";
     }
 }
