@@ -1,0 +1,9 @@
+1) barreira e exclusão mutua.
+    A barreira faz com que todas as threads aguardem em um mesmo ponto para poderem continuar executando.
+    E a exclusão mutua define um bloco onde apenas uma thread pode executar.
+
+2) O paralelismo implicito é o feito pelo sistema operacinal, ele é generico e tem baixa performance.
+    O paralelismo explicito é aquele feito pelo programador, é mais poderoso porem mais complexo.
+
+3) Um multi computador não compartilha da mesma memoria entre os computadores.
+    Um multi processador compartilha memoria entre as cpus.
