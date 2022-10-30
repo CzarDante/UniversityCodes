@@ -61,5 +61,4 @@ void dfs(vertice *vertices,int raiz)
         
     }
     vertices[raiz].inout[1]=count;
-    return;
 }
