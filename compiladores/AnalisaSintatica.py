@@ -129,6 +129,7 @@ class AnaliseSintatica():
         linha_doc = self.return_linha(numero_linha)
         match linha[2:]:
             case [3]:
-                pass
+                exit()
+                break
             case _:
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')    
+                print(f'END ERROR')    
