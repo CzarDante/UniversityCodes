@@ -130,6 +130,6 @@ class AnaliseSintatica():
         match linha[2:]:
             case [3]:
                 exit()
-                break
+                
             case _:
                 print(f'END ERROR')    
