@@ -128,8 +128,7 @@ class AnaliseSintatica():
     def end(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
         match linha[2:]:
-            case [3]:
-                exit()
-                
+            case [3, ( 10 | 11 | 21 | 22 | 23 | 24 | 25 | 31 | 32 | 33 | 34 | 35 | 36 | 41 | 51 | 61 | 62 | 63 | 64 | 65 | 66 | 67)]:
+                print(f'EXISTE CODIGO APOS O END, O END DEVE ESTAR AO FINAL DO CODIGO')
             case _:
-                print(f'END ERROR')    
+                pass  
