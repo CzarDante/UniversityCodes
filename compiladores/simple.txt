@@ -1,0 +1,15 @@
+1 input n
+2 if n <= 0 goto 800
+3 let x = 0
+4 let s = 0
+5 let x = x + 1
+6 let s = s + x
+7 if x <= n goto 450
+8 if x > n goto 700 
+9 let d = 0
+10 let d = s / n
+11 print d
+12 goto 1000
+13 let y = -1
+14 print y
+15 end
