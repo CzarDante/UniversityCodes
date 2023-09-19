@@ -11,7 +11,7 @@ Dentro da pasta raiz onde o codigo está localizado, disponibilize um arquivo .t
 No terminal da mesma pasta execute o seguinte comando
 
 ``
-py .\Initialize.py seu_arquivo.txt
+python .\Initialize.py seu_arquivo.txt
 ``
 
 Eduardo Cézar Pereira Fernandes - 2012130068

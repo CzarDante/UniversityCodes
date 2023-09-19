@@ -1,3 +1,6 @@
+# Require Python 3.10.9+
+#Eduardo Cézar Pereira Fernandes - 2012130068
+
 import sys
 import re
 
@@ -41,16 +44,16 @@ def Ordem_Label(linha):
     try: 
         label = int(linha[0])
         if label == 0:
-            print("Erro: O número do label não pode ser igual a 0.")
+            print(f"Erro({numero_linha}): O número do label não pode ser igual a 0.\n")
             exit()
         elif label > numero_linha:
             numero_linha = label
         else:
-            print("Erro: O número do label não está em ordem crescente.")
-            exit()
+            print(f"Erro na linha({numero_linha+1}): Label fora de ordem.\n")
+            
     except ValueError:
-        print("Erro: O label não é uma constante numérica.")
-        exit()
+        print(f"Erro na linha({numero_linha+1}): Label não é numérico.\n")
+        
 
 def return_line(index):
     return linhas[index]

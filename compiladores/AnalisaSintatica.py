@@ -9,6 +9,7 @@ class AnaliseSintatica():
 
     def Inicializador_linhas(self):
         t = Tokens(tabela_de_simbolos=self.tabela_de_simbolos)
+        print(t)
         linha = []
         numero_linha = 0
         for token in t.tokens:
@@ -49,7 +50,7 @@ class AnaliseSintatica():
                 pass
             case _:
                 #FAZER COMPARATIVOS PARA TODAS AS POSIBILIDADES
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Há um erro\n')
 
     def input(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
@@ -57,9 +58,9 @@ class AnaliseSintatica():
             case [41, 10]: #VAR + LF
                 pass
             case _:
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Erro na linha({numero_linha+1}): {linha_doc}')
                 if linha[2] != 41:
-                    print(f'Falta a variavel')                
+                    print(f'Falta a variavel\n')                
 
     def let(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
@@ -74,7 +75,7 @@ class AnaliseSintatica():
                 pass
             case _:
                 #FAZER COMPARATIVOS PARA TODAS AS POSIBILIDADES
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Erro na linha({numero_linha+1}): {linha_doc}\n')
     
     def print(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
@@ -82,7 +83,7 @@ class AnaliseSintatica():
             case [41, 10]:
                 pass
             case _:
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Erro na linha({numero_linha+1}): {linha_doc}')
     
     def goto(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
@@ -91,7 +92,7 @@ class AnaliseSintatica():
                 #ADICIONA FUNCAO PARA VERIFICAR SE ENDERECO GOTO EXISTE
                 pass
             case _:
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Erro na linha({numero_linha}): {linha_doc}\n')
     
     def if_(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
@@ -99,26 +100,22 @@ class AnaliseSintatica():
             case [(41 | 51), (31 | 32 | 33 | 34 | 35 | 36 ), (41 | 51), 65, 51, 10]:
                 pass
             case _:
-                print(f'Há um erro na linha {numero_linha}: {linha_doc}')
+                print(f'Erro na linha({numero_linha+1}): {linha_doc}\n')
 
                 if linha[2] != 41 and linha[2] != 51:
-                    print(f'Constante ou Variavel esperada na Operacao: {linha[0]} {linha[1]} ? {linha[2]} {linha[3]} {linha[4]} {linha[5]} ')
+                    print(f'Constante ou Variavel esperada na Operacao: {linha[0]} {linha[1]} ? {linha[2]} {linha[3]} {linha[4]} {linha[5]}\n')
                     return
-
 
                 if linha[3] != 31 and linha[3] != 32 and linha[3] != 33 and linha[3] != 34 and linha[3] != 35 and linha[3] != 36:
-                    print(f'Operador relacional esperada na Operacao: {linha[0]} {linha[1]} {linha[2]} ? {linha[3]} {linha[4]} {linha[5]} ')
+                    print(f'Operador relacional esperada na Operacao: {linha[0]} {linha[1]} {linha[2]} ? {linha[3]} {linha[4]} {linha[5]}\n')
                     return
                 
-
-                    
                 if linha[4] != 41 and linha[4] != 51:
-                    print(f'Constante ou Variavel esperada na Operacao: {linha[0]} {linha[1]} {linha[2]} {linha[3]} ? {linha[4]} {linha[5]} ')
+                    print(f'Constante ou Variavel esperada na Operacao: {linha[0]} {linha[1]} {linha[2]} {linha[3]} ? {linha[4]} {linha[5]}\n')
                     return 
 
-            
                 if linha[5] != 65:
-                    print(f'GOTO esperado na Operacao: {linha[0]} {linha[1]} {linha[2]} {linha[3]} {linha[4]} ? {linha[5]}')
+                    print(f'GOTO esperado na Operacao: {linha[0]} {linha[1]} {linha[2]} {linha[3]} {linha[4]} ? {linha[5]}\n')
                     return
                                         
                 if linha[6] != 51:
@@ -128,7 +125,7 @@ class AnaliseSintatica():
     def end(self, linha, numero_linha):
         linha_doc = self.return_linha(numero_linha)
         match linha[2:]:
-            case [3, ( 10 | 11 | 21 | 22 | 23 | 24 | 25 | 31 | 32 | 33 | 34 | 35 | 36 | 41 | 51 | 61 | 62 | 63 | 64 | 65 | 66 | 67)]:
-                print(f'EXISTE CODIGO APOS O END, O END DEVE ESTAR AO FINAL DO CODIGO')
+            case [3]:
+                exit()
             case _:
-                pass  
+                pass
