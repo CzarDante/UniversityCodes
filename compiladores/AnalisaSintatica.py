@@ -9,7 +9,6 @@ class AnaliseSintatica():
 
     def Inicializador_linhas(self):
         t = Tokens(tabela_de_simbolos=self.tabela_de_simbolos)
-        print(t)
         linha = []
         numero_linha = 0
         for token in t.tokens:
