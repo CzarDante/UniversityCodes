@@ -13,6 +13,10 @@ No terminal da mesma pasta execute o seguinte comando
 ``
 python .\Initialize.py seu_arquivo.txt
 ``
+Pode ser necessario usar o comando completo:
+``
+python3 .\Initialize.py seu_arquivo.txt
+``
 
 Eduardo Cézar Pereira Fernandes - 2012130068
 Ciencia da Computação - 8º Semestre
@@ -31,3 +35,6 @@ O Analisador Sintatico, AnalisaSintatica.py, verifica se a ordem de tokens está
 Em uma operação de if a entrada esperada pode ser: 150, o label, + if + Constante ou Variavel + Operador relacional + Constante ou Variavel + GOTO + Endereco Label
 
 Se alguma detes campos estiver errado ou ausente, o compilador deve indicar que existe um erro na sentença
+
+Este compilador não aceita o label com o valor 0 nem com valores negativos.
+Este compilador ignora os codigos apos o end, porem se o label destes estiver fora de ordem, pode ser apresentado um erro.
