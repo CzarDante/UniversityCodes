@@ -24,7 +24,7 @@ while True:
             total= candidato["vap"]
             percentage = candidato["pvap"]
             print(f"{name}: {total} ({percentage}%)")        
-        time.sleep(120)
+        time.sleep(60)
     except:
         print("Erro")
         time.sleep(5)
